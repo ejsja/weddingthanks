@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무료 프리미엄 웨딩 감사장 디자인 메이커</title>
+
+    <meta property="og:title" content="무료 프리미엄 웨딩 감사장 디자인 메이커" />
+    <meta property="og:description" content="정성 가득한 감사 편지 디자인 제작 및 고화질 이미지 저장 도구" />
+    <meta property="og:type" content="website" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Noto Sans KR", "sans-serif"],
+              myeongjo: ["Nanum Myeongjo", "serif"],
+              batang: ["Gowun Batang", "serif"],
+              serif_en: ["Playfair Display", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-800 min-h-screen font-sans flex flex-col justify-between">
+    <div>
+      <header class="bg-white border-b border-slate-100 py-4 px-6 sticky top-0 z-30 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 bg-amber-50 text-amber-600 rounded-full">
+              <i class="fa-solid fa-scroll text-xl"></i>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold tracking-tight text-slate-900">무료 프리미엄 웨딩 감사장 디자인 메이커</h1>
+              <p class="text-xs text-slate-500">정성 가득한 감사 편지 디자인 제작 및 고화질 이미지 저장 도구</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button
+              onclick="downloadCardImage()"
+              id="btn-download"
+              class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-lg transition-all shadow-md shadow-rose-500/20 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-file-image"></i> 고화질 이미지 저장
+            </button>
+            <button
+              onclick="window.print()"
+              class="px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-lg transition flex items-center gap-2"
+            >
+              <i class="fa-solid fa-print"></i> 감사장 인쇄 / PDF
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm space-y-6 no-print">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2"><i class="fa-solid fa-sliders text-rose-500"></i> 감사장 맞춤 옵션 설정</h2>
+              <p class="text-xs text-slate-500 mt-1">발송 주체, 호칭, 템플릿 테마 등을 자유롭게 지정해 보세요.</p>
+            </div>
+
+            <div class="space-y-3">
+              <label class="block text-sm font-semibold text-slate-700">1. 디자인 카드 테마 (10종)</label>
+              <div class="grid grid-cols-2 gap-2 max-h-[220px] overflow-y-auto p-1 border border-slate-100 rounded-xl bg-slate-50/50">
+                <button
+                  onclick="setTheme('gold')"
+                  id="btn-theme-gold"
+                  class="theme-btn border-2 border-rose-500 bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#E5D5B8] border border-amber-300 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">클래식 골드</span>
+                </button>
+                <button
+                  onclick="setTheme('green')"
+                  id="btn-theme-green"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#E3E8E2] border border-emerald-200 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">내추럴 그리너리</span>
+                </button>
+                <button
+                  onclick="setTheme('pink')"
+                  id="btn-theme-pink"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#FCECEF] border border-rose-200 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">로맨틱 핑크</span>
+                </button>
+                <button
+                  onclick="setTheme('minimal')"
+                  id="btn-theme-minimal"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#FFFFFF] border border-slate-300 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">모던 미니멀</span>
+                </button>
+                <button
+                  onclick="setTheme('navy')"
+                  id="btn-theme-navy"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#1E3A8A] border border-blue-900 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">로얄 네이비</span>
+                </button>
+                <button
+                  onclick="setTheme('vintage')"
+                  id="btn-theme-vintage"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#F4E3D3] border border-amber-600/30 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">빈티지 레트로</span>
+                </button>
+                <button
+                  onclick="setTheme('purple')"
+                  id="btn-theme-purple"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#F3E8FF] border border-purple-200 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">오키드 퍼플</span>
+                </button>
+                <button
+                  onclick="setTheme('midnight')"
+                  id="btn-theme-midnight"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#1E1B4B] border border-indigo-950 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">미드나잇 스타</span>
+                </button>
+                <button
+                  onclick="setTheme('aquamarine')"
+                  id="btn-theme-aquamarine"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#E0F2FE] border border-cyan-200 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">아쿠아 마린</span>
+                </button>
+                <button
+                  onclick="setTheme('autumn')"
+                  id="btn-theme-autumn"
+                  class="theme-btn border-2 border-transparent bg-white hover:bg-slate-50 p-2 rounded-lg flex items-center gap-2 transition text-left"
+                >
+                  <span class="w-4 h-4 rounded-full bg-[#FFEDD5] border border-orange-200 shrink-0"></span>
+                  <span class="text-xs font-semibold text-slate-700 truncate">어텀 브라운</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-slate-700">2. 한글 글꼴 스타일</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button
+                  onclick="setFont('batang')"
+                  id="btn-font-batang"
+                  class="font-btn border-2 border-rose-500 bg-slate-50 py-1.5 text-xs font-medium rounded-lg font-batang transition"
+                >
+                  고운 바탕체
+                </button>
+                <button
+                  onclick="setFont('myeongjo')"
+                  id="btn-font-myeongjo"
+                  class="font-btn border-2 border-transparent bg-slate-50 py-1.5 text-xs font-medium rounded-lg font-myeongjo transition"
+                >
+                  나눔 명조체
+                </button>
+                <button
+                  onclick="setFont('sans')"
+                  id="btn-font-sans"
+                  class="font-btn border-2 border-transparent bg-slate-50 py-1.5 text-xs font-medium rounded-lg font-sans transition"
+                >
+                  노토 고딕체
+                </button>
+              </div>
+            </div>
+
+            <hr class="border-slate-100" />
+
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <label class="block text-sm font-semibold text-slate-700">3. 발송 주체 및 이름 설정</label>
+              </div>
+
+              <div class="bg-slate-100 p-1 rounded-xl grid grid-cols-3 text-center text-[11px] font-semibold">
+                <button onclick="toggleSenderTab('couple')" id="tab-sender-couple" class="py-2 rounded-lg bg-white text-slate-900 shadow-sm transition">
+                  💍 신랑 · 신부
+                </button>
+                <button
+                  onclick="toggleSenderTab('groom_parents')"
+                  id="tab-sender-groom-parents"
+                  class="py-2 rounded-lg text-slate-500 hover:text-slate-900 transition"
+                >
+                  ♂️ 신랑측 혼주
+                </button>
+                <button
+                  onclick="toggleSenderTab('bride_parents')"
+                  id="tab-sender-bride-parents"
+                  class="py-2 rounded-lg text-slate-500 hover:text-slate-900 transition"
+                >
+                  ♀️ 신부측 혼주
+                </button>
+              </div>
+
+              <div id="sender-couple-fields" class="space-y-3 pt-1">
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <span class="text-[11px] text-slate-500 block mb-1">신랑 이름</span>
+                    <input
+                      type="text"
+                      id="input-groom"
+                      value="민우"
+                      oninput="generateSignoff()"
+                      class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-rose-400"
+                    />
+                  </div>
+                  <div>
+                    <span class="text-[11px] text-slate-500 block mb-1">신부 이름</span>
+                    <input
+                      type="text"
+                      id="input-bride"
+                      value="서연"
+                      oninput="generateSignoff()"
+                      class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-rose-400"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div id="sender-groom-parents-fields" class="space-y-3 pt-1 hidden">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 space-y-2.5">
+                  <span class="text-xs font-bold text-sky-600 block border-b border-sky-100 pb-1">신랑측 혼주 정보 입력</span>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">아버님 존함</span>
+                      <div class="flex items-center gap-1.5 mt-1">
+                        <input
+                          type="text"
+                          id="input-g-father"
+                          value="이웅재"
+                          oninput="generateSignoff()"
+                          class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                        />
+                        <label class="flex items-center gap-0.5 cursor-pointer text-[10px] text-slate-500 shrink-0">
+                          <input type="checkbox" id="check-g-father-dead" onchange="generateSignoff()" class="accent-rose-500 rounded text-xs" /> 故
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">어머님 존함</span>
+                      <div class="flex items-center gap-1.5 mt-1">
+                        <input
+                          type="text"
+                          id="input-g-mother"
+                          value="김영희"
+                          oninput="generateSignoff()"
+                          class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                        />
+                        <label class="flex items-center gap-0.5 cursor-pointer text-[10px] text-slate-500 shrink-0">
+                          <input type="checkbox" id="check-g-mother-dead" onchange="generateSignoff()" class="accent-rose-500 rounded text-xs" /> 故
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-1.5 pt-1">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs text-slate-600">
+                      <input type="checkbox" id="check-g-show-honju" checked onchange="generateSignoff()" class="accent-rose-500 rounded" />
+                      <span>이름 앞에 '혼주' 호칭 표시</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs text-slate-600">
+                      <input type="checkbox" id="check-g-show-child" onchange="toggleGroomChildInput()" class="accent-rose-500 rounded" />
+                      <span>자녀 이름 함께 기재하기</span>
+                    </label>
+                  </div>
+                  <div id="groom-child-input-group" class="grid grid-cols-2 gap-2 pt-1 hidden">
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">관계</span>
+                      <input
+                        type="text"
+                        id="input-groom-rel-type"
+                        value="아들"
+                        oninput="generateSignoff()"
+                        class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">자녀 이름</span>
+                      <input
+                        type="text"
+                        id="input-groom-rel-name"
+                        value="민우"
+                        oninput="generateSignoff()"
+                        class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sender-bride-parents-fields" class="space-y-3 pt-1 hidden">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 space-y-2.5">
+                  <span class="text-xs font-bold text-rose-500 block border-b border-rose-100 pb-1">신부측 혼주 정보 입력</span>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">아버님 존함</span>
+                      <div class="flex items-center gap-1.5 mt-1">
+                        <input
+                          type="text"
+                          id="input-b-father"
+                          value="김철수"
+                          oninput="generateSignoff()"
+                          class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                        />
+                        <label class="flex items-center gap-0.5 cursor-pointer text-[10px] text-slate-500 shrink-0">
+                          <input type="checkbox" id="check-b-father-dead" onchange="generateSignoff()" class="accent-rose-500 rounded text-xs" /> 故
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">어머님 존함</span>
+                      <div class="flex items-center gap-1.5 mt-1">
+                        <input
+                          type="text"
+                          id="input-b-mother"
+                          value="박정자"
+                          oninput="generateSignoff()"
+                          class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                        />
+                        <label class="flex items-center gap-0.5 cursor-pointer text-[10px] text-slate-500 shrink-0">
+                          <input type="checkbox" id="check-b-mother-dead" onchange="generateSignoff()" class="accent-rose-500 rounded text-xs" /> 故
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-1.5 pt-1">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs text-slate-600">
+                      <input type="checkbox" id="check-b-show-honju" checked onchange="generateSignoff()" class="accent-rose-500 rounded" />
+                      <span>이름 앞에 '혼주' 호칭 표시</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs text-slate-600">
+                      <input type="checkbox" id="check-b-show-child" onchange="toggleBrideChildInput()" class="accent-rose-500 rounded" />
+                      <span>자녀 이름 함께 기재하기</span>
+                    </label>
+                  </div>
+                  <div id="bride-child-input-group" class="grid grid-cols-2 gap-2 pt-1 hidden">
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">관계</span>
+                      <input
+                        type="text"
+                        id="input-bride-rel-type"
+                        value="딸"
+                        oninput="generateSignoff()"
+                        class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <span class="text-[10px] text-slate-400 block">자녀 이름</span>
+                      <input
+                        type="text"
+                        id="input-bride-rel-name"
+                        value="서연"
+                        oninput="generateSignoff()"
+                        class="w-full px-2 py-1 border border-slate-200 rounded text-xs focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-1">
+                <div>
+                  <span class="text-xs font-semibold text-slate-600 block mb-1">하단 맺음말(호칭)</span>
+                  <select id="select-suffix" onchange="generateSignoff()" class="w-full p-2 border border-slate-200 rounded-lg text-xs bg-white">
+                    <option value="올림" selected>올림</option>
+                    <option value="드림">드림</option>
+                    <option value="배상">배상</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="pt-1.5">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-[11px] font-bold text-slate-600 block">하단 발송인 표시 최종 결과물</span>
+                  <button onclick="resetToAutoGenerated()" class="text-[10px] text-rose-500 hover:underline flex items-center gap-0.5">
+                    <i class="fa-solid fa-rotate-left"></i> 자동생성 적용
+                  </button>
+                </div>
+                <textarea
+                  id="input-signoff-text"
+                  rows="2"
+                  oninput="manualSignoffEdit()"
+                  class="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs text-slate-800 leading-relaxed font-mono focus:outline-none focus:border-rose-400"
+                >
+신랑 이민우 · 신부 김서연 올림</textarea
+                >
+                <p class="text-[10px] text-slate-400 mt-1">※ 위 자동 완성 양식을 그대로 사용하시거나 직접 자유롭게 편집하실 수도 있습니다.</p>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="input-title" class="block text-sm font-semibold text-slate-700">4. 메인 타이틀 문구</label>
+              <input
+                type="text"
+                id="input-title"
+                value="감사의 말씀을 올립니다"
+                oninput="updateCard()"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-rose-400"
+              />
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <label class="block text-sm font-semibold text-slate-700">5. 감사 내용 본문</label>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span id="preset-label" class="text-[11px] text-slate-400">상황별 추천 샘플 가져오기:</span>
+                <div id="preset-buttons-container" class="flex flex-wrap gap-1.5"></div>
+              </div>
+              <textarea
+                id="input-message"
+                rows="9"
+                oninput="updateCard()"
+                class="w-full p-3 border border-slate-200 rounded-lg text-xs leading-relaxed focus:outline-none focus:border-rose-400 font-myeongjo"
+              >
+바쁘신 중에도 저희의 결혼식에 참석하여
+자리를 빛내주시고 따뜻한 축하와 격려를
+보내주셔서 깊이 감사드립니다.
+          
+보내주신 축복 속에 저희 두 사람은
+부부로서의 소중한 첫걸음을
+행복하게 딛게 되었습니다.
+          
+서로 마주 보며 아끼고 존중하며,
+보내주신 넓은 사랑과 가르침을
+평생 마음에 새기고 예쁘게 살아가겠습니다.
+          
+앞으로도 늘 건강하시고 가정에 평화와
+행복이 가득하기를 진심으로 기원합니다.
+            </textarea
+              >
+            </div>
+            <!--
+            <div
+              class="ad-reservation-box min-h-[120px] md:min-h-[250px] w-full flex items-center justify-center bg-slate-50 border border-dashed border-slate-200 rounded-xl p-2 transition-all duration-300"
+            >
+              <span class="text-[10px] text-slate-300 tracking-widest uppercase font-light">이곳에 광고가 배치될 예정입니다</span>
+            </div>
+            -->
+          </section>
+
+          <section class="lg:col-span-7 flex flex-col items-center lg:sticky lg:top-24">
+            <div class="w-full max-w-[460px] flex justify-between items-center mb-3 no-print">
+              <span class="text-sm font-bold text-slate-700 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                감사장 디자인 엽서 실시간 미리보기
+              </span>
+              <span class="text-xs text-slate-400">실제 비율 디자인</span>
+            </div>
+
+            <div class="w-full flex justify-center py-4 card-scale-wrapper font-sans">
+              <div class="card-scale-container transition-transform duration-300">
+                <div
+                  id="capture-area"
+                  class="w-[450px] min-h-[630px] h-auto shadow-2xl relative flex flex-col justify-between py-12 px-10 text-center transition-all duration-300 bg-white"
+                >
+                  <div id="theme-overlay-top" class="absolute top-0 left-0 right-0 pointer-events-none transition-all duration-300"></div>
+                  <div id="card-inner-border" class="absolute inset-4 pointer-events-none transition-all duration-300"></div>
+
+                  <div class="mt-4 mb-2 z-10">
+                    <div id="theme-icon-container" class="flex justify-center items-center"></div>
+                    <div id="card-badge" class="font-serif_en italic text-xs tracking-widest mt-2 uppercase">Thank You</div>
+                  </div>
+
+                  <div class="my-3 z-10">
+                    <h3 id="card-title" class="text-2xl font-bold leading-normal text-amber-950 tracking-wide">감사의 말씀을 올립니다</h3>
+                  </div>
+
+                  <div class="my-6 flex-grow flex items-center justify-center z-10">
+                    <p id="card-message" class="text-[14px] leading-8 text-slate-800 whitespace-pre-line text-center max-w-[340px] break-words mx-auto">
+                      바쁘신 중에도 저희의 결혼식에 참석하여 자리를 빛내주시고 따뜻한 축하와 격려를 보내주셔서 깊이 감사드립니다...
+                    </p>
+                  </div>
+
+                  <div class="mt-auto pt-6 mb-2 z-10">
+                    <div id="card-divider-bottom" class="flex justify-center items-center gap-2 mb-4"></div>
+                    <p id="card-signoff" class="text-[14px] leading-relaxed font-semibold whitespace-pre-line text-amber-950">신랑 이민우 · 신부 김서연 올림</p>
+                  </div>
+                  <div id="theme-overlay-bottom" class="absolute bottom-0 left-0 right-0 pointer-events-none transition-all duration-300"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="max-w-[460px] w-full mt-4 space-y-4 no-print">
+              <div class="grid grid-cols-2 gap-3">
+                <button
+                  onclick="downloadCardImage()"
+                  class="py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-emerald-600/10 transition-all flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-download"></i> 이미지 저장하기 (PNG)
+                </button>
+                <button
+                  onclick="window.print()"
+                  class="py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-print"></i> 즉시 인쇄 (A4 / PDF)
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-12 pt-12 border-t border-slate-200 no-print">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 space-y-8 text-slate-600 text-sm leading-relaxed">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-book-open text-amber-600"></i> 올바른 웨딩 및 경조사 모바일 감사장 작성 가이드
+            </h2>
+            <p class="text-xs text-slate-400">품격 있는 결혼식 답례 인사말 구성 원칙과 상황별 추천 문구 사전</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <h3 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-1">1. 모바일 감사장 발송 시기와 예절</h3>
+              <p>
+                결혼식을 마친 후 참석해주신 하객분들께 감사의 마음을 전하는 모바일 감사장(답례장)은 혼례가 끝난 당일 저녁 또는 늦어도 2~3일 이내에 발송하는 것이
+                예의입니다. 바쁜 일상 속에서도 소중한 시간을 내어 자리를 빛내주신 분들께 격식 있는 문구와 깔끔한 디자인으로 정성을 표현하는 것이 중요합니다.
+              </p>
+              <p>
+                최근에는 종이 감사장 대신 접근성이 좋은 모바일 카드 형태의 감사 편지 발송이 대중화되었으며, 고해상도 그래픽 카드로 저장하여 카카오톡이나 문자
+                메시지로 일괄 혹은 개별 전송하는 방식이 널리 활용되고 있습니다.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-1">2. 감사장 문구 작성의 3대 핵심 원칙</h3>
+              <ul class="list-disc list-inside space-y-1.5 text-xs">
+                <li><strong>참석에 대한 직접적인 감사:</strong> 날씨나 공사다망한 일정 속에서도 걸음 해주신 점에 대한 명확한 사의를 표합니다.</li>
+                <li><strong>새로운 출발에 대한 다짐:</strong> 축복 속에 결실을 맺은 부부가 앞으로 서로 존중하며 예쁘게 살아가겠다는 서약을 담습니다.</li>
+                <li>
+                  <strong>하객의 안녕과 기원:</strong> 문장의 마무리에는 감사의 주체뿐만 아니라 축복을 보내준 하객 가정의 평안과 건강을 기원하는 축원 구문을
+                  반드시 포함합니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-1">3. 발송 주체별 표준 추천 인사말 모음</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                <h4 class="font-bold text-rose-600 text-sm">💍 신랑 · 신부 대표 발송 문구</h4>
+                <p class="text-slate-500 italic">
+                  "바쁘신 중에도 저희의 결혼식에 참석하여 자리를 빛내주시고 따뜻한 축하와 격려를 보내주셔서 깊이 감사드립니다. 보내주신 축복 속에 저희 두 사람은
+                  부부로서의 소중한 첫걸음을 행복하게 딛게 되었습니다. 서로 아끼고 존중하며 예쁘게 살아가겠습니다."
+                </p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                <h4 class="font-bold text-sky-600 text-sm">♂️ 혼주측 격식인사 (표준양식)</h4>
+                <p class="text-slate-500 italic">
+                  "공사다망하신 중에도 저희 자녀의 혼례에 오셔서 자리를 빛내주시고 따뜻하게 격려해 주셔서 깊은 감사의 말씀을 올립니다. 보내주신 축하와 사랑의
+                  말씀은 새 출발을 하는 아이들에게 평생 잊지 못할 큰 힘과 버팀목이 될 것입니다. 가내 평안을 기원합니다."
+                </p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                <h4 class="font-bold text-amber-700 text-sm">📜 기품 있는 지면 대용 배상 구문</h4>
+                <p class="text-slate-500 italic">
+                  "귀한 걸음으로 저희 자녀의 새로운 혼인을 축복해 주시고 귀중한 정성을 보내주셔서 진심으로 감사드립니다. 마땅히 직접 찾아뵙고 인사를 올려야
+                  도리이나 서면으로 감사장을 대신함을 너그럽게 양해해 주시기 바라며, 귀댁에 평안이 깃들기를 축원합니다."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-amber-50/50 border border-amber-100 rounded-xl p-4 text-xs space-y-2">
+            <h3 class="font-bold text-amber-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info"></i> 기술 및 데이터 처리 안내 (개인정보 보호 표준 지침)
+            </h3>
+            <p class="text-amber-800">
+              본 무료 프리미엄 웨딩 감사장 디자인 메이커 툴은 하객분들의 개인정보 보호를 최우선 가치로 삼고 있습니다. 사용자가 입력하는 신랑, 신부, 혼주 존함 및
+              커스텀 감사 메시지는 내부 웹 애플리케이션의 순수 프론트엔드 자바스크립트 컨텍스트 내에서만 유기적으로 연동되며, 별도의 외부 데이터베이스 서버나
+              원격 저장소로 일체 전송 및 수집되지 않습니다. 이미지 내보내기 기능(`html2canvas`) 또한 클라이언트 브라우저 샌드박스 내부에서 독립적으로
+              렌더링되므로 안심하고 안전하게 영구 무료로 이용하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div
+      id="toast"
+      class="toast-alert fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-xl text-sm font-medium shadow-xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2"
+    >
+      <i class="fa-solid fa-check text-emerald-400"></i> <span id="toast-message">저장 완료!</span>
+    </div>
+
+    <footer class="bg-white border-t border-slate-100 py-6 px-6 text-center text-xs text-slate-400 mt-12 no-print">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>© 2026 웨딩 감사장 메이커. All Rights Reserved.</div>
+        <div class="flex gap-4">
+          <button onclick="toggleModal('privacy-modal')" class="hover:text-slate-600 underline cursor-pointer">개인정보처리방침</button>
+          <button onclick="toggleModal('terms-modal')" class="hover:text-slate-600 underline cursor-pointer">이용약관 및 문의</button>
+        </div>
+      </div>
+    </footer>
+
+    <div id="privacy-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
+      <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 space-y-4 shadow-2xl">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <h3 class="text-base font-bold text-slate-900">개인정보처리방침 (Privacy Policy)</h3>
+          <button onclick="toggleModal('privacy-modal')" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
+          <p>본 서비스는 이용자의 개인정보를 매우 소중하게 생각하며, 대한민국의 개인정보보호법 및 글로벌 표준 지침을 준수합니다.</p>
+          <p class="font-bold text-slate-800">1. 수집하는 개인정보 항목 및 목적</p>
+          <p>
+            이용자가 모바일 감사장 제작을 위해 입력하는 발송 주체 성명, 관계, 본문 텍스트 등은 오직 고화질 이미지 렌더링 및 클라이언트 기반 파일 내보내기 목적을
+            위해서만 실시간 활용됩니다.
+          </p>
+          <p class="font-bold text-slate-800">2. 개인정보의 저장 및 파기</p>
+          <p>
+            본 웹 서비스는 별도의 백엔드 서버 시스템을 운영하지 않는 정적 애플리케이션입니다. 따라서 이용자가 입력한 어떠한 폼 데이터도 원격지에 저장되거나
+            로그로 남지 않으며, 브라우저 새로고침 및 창 닫기 시 즉각적이고 영구적으로 자동 소멸합니다.
+          </p>
+          <p class="font-bold text-slate-800">3. 쿠키(Cookie) 및 구글 애드센스 광고 수집 안내</p>
+          <p>
+            본 사이트는 서비스 품질 향상 및 맞춤형 광고 게재를 위해 Google AdSense 등 서드파티 식별 쿠키를 활용할 수 있습니다. 사용자는 브라우저 설정을 통해
+            쿠키 수집을 거부할 권리가 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="terms-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
+      <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 space-y-4 shadow-2xl">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <h3 class="text-base font-bold text-slate-900">이용약관 및 문의 창구</h3>
+          <button onclick="toggleModal('terms-modal')" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
+          <p class="font-bold text-slate-800">1. 서비스의 목적 및 이용 범위</p>
+          <p>
+            본 툴은 누구나 결혼식 및 경조사 이후 비영리 목적으로 자유롭게 답례 카드를 제작 및 다운로드할 수 있도록 열려 있는 오픈 디자인 메이커 솔루션입니다.
+          </p>
+          <p class="font-bold text-slate-800">2. 책임의 한계</p>
+          <p>
+            사용자가 입력한 오타나 기재 오류로 인해 오발송된 결과물에 대해서 본 툴은 법적 책임을 지지 않으며, 다운로드하기 전 우측의 실시간 미리보기 컴포넌트를
+            면밀히 교정 후 내보내기 하시기 바랍니다.
+          </p>
+          <p class="font-bold text-slate-800">3. 관리자 연락처 및 문의하기</p>
+          <p>
+            서비스 버그 리포트, 템플릿 제안 및 기타 기술적 제휴 관련 문의사항은 하단의 공식 이메일 주소 채널을 통해 발송해 주시면 확인 후 피드백을 전달해
+            드리겠습니다.
+          </p>
+          <p class="text-slate-400 font-semibold mt-2">✉️ 서비스 지원 및 권리 침해 신고 이메일: support@vrmdhouse.io</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>

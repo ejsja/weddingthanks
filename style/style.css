@@ -1,0 +1,75 @@
+/* Card scaling to fit mobile displays nicely in live preview */
+.card-scale-wrapper {
+  height: auto;
+  min-height: 650px;
+}
+@media (max-width: 540px) {
+  .card-scale-container {
+    transform: scale(0.82);
+    transform-origin: top center;
+  }
+  .card-scale-wrapper {
+    min-height: 540px;
+  }
+}
+@media (max-width: 440px) {
+  .card-scale-container {
+    transform: scale(0.7);
+    transform-origin: top center;
+  }
+  .card-scale-wrapper {
+    min-height: 460px;
+  }
+}
+@media (max-width: 360px) {
+  .card-scale-container {
+    transform: scale(0.62);
+    transform-origin: top center;
+  }
+  .card-scale-wrapper {
+    min-height: 410px;
+  }
+}
+
+/* Print optimization to print ONLY the card */
+@media print {
+  header,
+  section,
+  .no-print,
+  .toast-alert {
+    display: none !important;
+  }
+  body {
+    background-color: white !important;
+  }
+  main {
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .grid {
+    display: block !important;
+  }
+  .card-scale-wrapper {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .card-scale-container {
+    transform: none !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  #capture-area {
+    box-shadow: none !important;
+    border: 1px solid #dcdcdc !important;
+    background-color: white !important;
+    width: 15.5cm !important;
+    min-height: 22cm !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+}
